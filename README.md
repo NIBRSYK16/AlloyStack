@@ -42,6 +42,25 @@ AlloyStack$ just init
 
 Additionally, the repository of AlloyStack is integrated with GitHub Actions. Therefore, tools such as [act](https://github.com/nektos/act) can be used locally to quickly run some basic test cases via Docker.
 
+## [Testing a Workflow](./doc/testing_a_workflow.md)
+
+Taking map_reduce workflow as an example.
+
+Build System Services:
+```
+AlloyStack$ just all_libos
+```
+
+Build Workflow Functions:
+```
+AlloyStack$ just rust_func file_reader
+AlloyStack$ just rust_func mapper
+AlloyStack$ just rust_func reducer
+```
+Execute the Workflow:
+```
+AlloyStack$ target/release/asvisor --files isol_config/map_reduce.json
+```
 ## Evaluation
 ### Cold start latency
 
