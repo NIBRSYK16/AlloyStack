@@ -34,9 +34,15 @@ pub fn main() -> Result<()> {
     let previous_cnt: i32 = if i == 0 {
         0
     } else {
-        DataBuffer::<Arraysum>::from_buffer_slot(format!("slot_{}", i - 1))
-            .expect("missing data buffer?")
-            .count
+        let prev = DataBuffer::<Arraysum>::from_buffer_slot(format!("slot_{}", i - 1));
+        match prev {
+            Some(buf) => {
+                buf.count
+            },
+            None => {
+                0
+            }
+        }
     };
 
     let mut next_buffer: DataBuffer<Arraysum> = DataBuffer::with_slot(format!("slot_{}", n));
