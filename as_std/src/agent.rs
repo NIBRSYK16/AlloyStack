@@ -70,7 +70,7 @@ mod refer_based_impl {
             } else {
                 let fingerprint = T::__fingerprint();
                 let ptr = libos!(buffer_alloc(&slot, l, fingerprint));
-                println!("[debug] buffer_alloc ptr = {:?}", ptr);
+                //println!("[debug] buffer_alloc ptr = {:?}", ptr);
                 let ptr = ptr.expect("alloc failed.") as *mut T;
                 if ptr.is_null() {
                     panic!("buffer_alloc returned null pointer!");

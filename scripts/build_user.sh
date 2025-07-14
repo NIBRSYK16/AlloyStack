@@ -17,15 +17,9 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
-for file in $(find user -name 'Cargo.toml' \
-    -not -path 'user/nn_conv/Cargo.toml' \
-    -not -path 'user/mmap_file/Cargo.toml' \
-    -not -path 'user/httpd/Cargo.toml' \
-    -not -path 'user/should_panic/Cargo.toml' \
-    -not -path 'user/never_stop/Cargo.toml' \
-    -not -path 'user/tinywasm*/Cargo.toml' \
-    -not -path 'user/wasmtime*/Cargo.toml'); do
-    echo "Build $file".
+
+for file in $(find user -name 'Cargo.toml'); do
+    echo "Building $file"
     if ! bash -c "cargo build $feature_arg --manifest-path $file $release_flag"; then
         echo "Build $file failed!"
         exit 1
