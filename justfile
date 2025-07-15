@@ -248,7 +248,7 @@ breakdown: asvisor all_libos
     target/{{profile}}/asvisor --files isol_config/parallel_sort_c5.json --metrics total-dur 2>&1 | grep 'total_dur'
     target/{{profile}}/asvisor --files isol_config/long_chain_n15.json --metrics total-dur 2>&1 | grep 'total_dur'
 
-p99: asvisor all_libos parallel_sort
+p99_latency: asvisor all_libos parallel_sort
     -sudo mount fs_images/fatfs.img image_content 2>/dev/null
     sudo -E ./scripts/gen_data.py 0 0 3 '25 * 1024 * 1024'
 
