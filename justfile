@@ -5,7 +5,7 @@ enable_mpk := "1"
 enable_pkey_per_func := "0"
 enable_file_buffer := "0"
 
-enable_release := "0"
+enable_release := "1"
 
 mpk_flag := if enable_mpk == "1" {
     if enable_pkey_per_func == "1" { 
@@ -73,7 +73,7 @@ all_rust:
 run_rust_test:
     just all_libos
     just all_rust
-    ./scripts/run_tests.sh {{ mpk_flag }}
+    ./scripts/run_tests.sh {{ mpk_flag }} {{release_flag}}
 
 cc_flags_p1 := "-Wl,--gc-sections -nostdlib -Wl,--whole-archive"
 cc_flags_p2 := "-Wl,--no-whole-archive -shared"
