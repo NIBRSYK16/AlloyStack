@@ -73,7 +73,7 @@ all_rust:
 run_rust_test:
     just all_libos
     just all_rust
-    ./scripts/run_tests.sh {{ mpk_flag }} {{release_flag}}
+    ./scripts/run_tests.sh {{release_flag}} {{ mpk_flag }} 
 
 cc_flags_p1 := "-Wl,--gc-sections -nostdlib -Wl,--whole-archive"
 cc_flags_p2 := "-Wl,--no-whole-archive -shared"
