@@ -1,11 +1,11 @@
 
 set positional-arguments
 
-enable_mpk := "0"
+enable_mpk := "1"
 enable_pkey_per_func := "0"
 enable_file_buffer := "0"
 
-enable_release := "1"
+enable_release := "0"
 
 mpk_flag := if enable_mpk == "1" {
     if enable_pkey_per_func == "1" { 
@@ -29,7 +29,8 @@ rust_func func_name:
 
 libos lib_name:
     cargo build {{ release_flag }} {{ if enable_mpk == "1" { "--features mpk" } else { "" } }} \
-        --manifest-path common_service/{{ lib_name }}/Cargo.toml
+        --manifest-path common_service/{{ lib_name }}/Cargo.toml &&\
+    cp common_service/{{ lib_name }}/target/{{ profile }}/lib{{ lib_name }}.so ./target/{{ profile }}
 
 pass_args:
     just rust_func func_a
@@ -140,7 +141,7 @@ gen_data:
     sudo -E ./scripts/gen_data.py
 
 init:
-    rustup override set 'nightly-2023-12-01'
+    rustup override set 'nightly-2024-01-04'
     rustup target add x86_64-unknown-linux-musl
     [ -f fs_images/fatfs.img ] || unzip fs_images/fatfs.zip -d fs_images
     [ -d image_content ] || mkdir image_content
