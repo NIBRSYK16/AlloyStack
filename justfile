@@ -143,6 +143,7 @@ gen_data:
 init:
     rustup override set 'nightly-2024-01-04'
     rustup target add x86_64-unknown-linux-musl
+    rustup target add x86_64-unknown-none
     [ -f fs_images/fatfs.img ] || unzip fs_images/fatfs.zip -d fs_images
     [ -d image_content ] || mkdir image_content
 
