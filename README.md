@@ -9,7 +9,7 @@ build and testing processes. This document guides users in reproducing the exper
 ## Artifact check-list
 
 * Program: AlloyStack
-* Compilation: rustup toolchain (nightly-2023-12-01-x86_64-unknown-linux-gnu) and gcc (11.4.0)
+* Compilation: rustup toolchain (nightly-2024-01-04-x86_64-unknown-linux-gnu) and gcc (11.4.0)
 * Run-time environment: Ubuntu 22.04
 * Hardware: Intel x86 servers equipped with MPK
 
